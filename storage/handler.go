@@ -115,7 +115,7 @@ func (h *Handler) List(factory func(context.Context, *http.Request, httprouter.P
 			h.h.WriteError(w, r, err)
 			return
 		}
-		limit, offset := pagination.Parse(r, 100, 0, 500)
+		limit, offset := pagination.Parse(r, 100, 0, 10000)
 
 		if err := h.s.List(ctx, l.Collection, l.Value, limit, offset); err != nil {
 			h.h.WriteError(w, r, err)
